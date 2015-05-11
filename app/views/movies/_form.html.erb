@@ -1,0 +1,21 @@
+<%= simple_form_for(@movie) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :name %>
+    <%= f.input :year %>
+    <%= f.input :pg %>
+    <%= f.input :minute %>
+    <%= f.input :userrate %>
+    <%= f.input :imdbrate %>
+    <%= f.input :plot %>
+    <%= f.input :director %>
+    <%= f.input :writers %>
+    <%= f.input :stars %>
+    <%= f.input :poster %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
