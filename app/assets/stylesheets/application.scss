@@ -38,6 +38,7 @@
 body {
   padding-bottom: 70px;
   background-color: gainsboro;
+  font-family: BYekan;
 }
 
 .btn-xlarge {
@@ -73,4 +74,14 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
+}
+.custom-box {
+  background: none repeat scroll 0 0 #ffffff;
+  border: 1px solid #dadada;
+  border-radius: 3px;
+  margin-bottom: 50px;
+  padding: 10px;
+}
+.post_create_date{
+  color: red;
 }

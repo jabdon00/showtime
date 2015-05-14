@@ -9,7 +9,7 @@
       </div>
       <div class="row">
         <div class="col-md-8">
-        <table class="table">
+        <table class="table table-striped">
           <tbody>
               <tr>
                 <td>
@@ -99,6 +99,22 @@
                   <strong> <%= @subcategory.find(movie.subcategory_id).name %></strong>
                 </td>
               </tr>
+              <tr>
+                <td>
+                  <strong>لینک دریافت</strong>
+                </td>
+                <td>
+                  <strong> <a href=<%= movie.link %> > دانلود </a> </strong>
+                </td>
+              </tr>
+              <tr class="post_create_date">
+                <td>
+                  <strong>تاریخ درج پست</strong>
+                </td>
+                <td>
+                  <%= JalaliDate.to_jalali(movie.created_at).strftime("%d %B %Y") %>
+                </td>
+              </tr>
           </tbody>
         </table>
         </div>
@@ -113,11 +129,12 @@
         </div>
       </div>
 
-      <%= link_to 'نمایش', movie , class: 'btn btn-primary' %>
+       <%= link_to 'نمایش', movie , class: 'btn btn-primary' %>
       <% if user_admin? %>
         <%= link_to 'ویرایش', edit_movie_path(movie), class: 'btn btn-default' %>
         <%= link_to 'حذف', movie, method: :delete, data: { confirm: 'مطمئن هستید؟' } , class: 'btn btn-danger'%>
       <% end %>
+
     </div>
     <% end %>
 

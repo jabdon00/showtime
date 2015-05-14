@@ -12,6 +12,8 @@ class MoviesController < ApplicationController
   # GET /movies/1
   # GET /movies/1.json
   def show
+    @category = Category.all
+    @subcategory = Category.all
   end
 
   # GET /movies/new
@@ -25,6 +27,8 @@ class MoviesController < ApplicationController
   # GET /movies/1/edit
   def edit
     authorize Movie
+    @category = Category.all
+    @subcategory = Category.all
   end
 
   # POST /movies
@@ -49,7 +53,7 @@ class MoviesController < ApplicationController
     authorize @movie
     respond_to do |format|
       if @movie.update(movie_params)
-        format.html { redirect_to @movie}
+        format.html { redirect_to root_path}
         format.json { render :show, status: :ok, location: @movie }
       else
         format.html { render :edit }
@@ -81,6 +85,6 @@ class MoviesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def movie_params
-      params.require(:movie).permit(:name, :year, :pg, :minute, :imdbrate, :plot, :director, :writers, :stars, :poster,:category_id,:subcategory_id)
+      params.require(:movie).permit(:name, :year, :pg, :minute, :imdbrate, :plot, :director, :writers, :stars, :poster,:category_id,:subcategory_id,:link)
     end
 end
