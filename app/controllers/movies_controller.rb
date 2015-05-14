@@ -1,10 +1,12 @@
 class MoviesController < ApplicationController
   before_action :set_movie, only: [:show, :edit, :update, :destroy]
-  after_action :verify_authorized, :except =>  [:index,:insert_mode]
+  after_action :verify_authorized, :except =>  [:index,:show]
   # GET /movies
   # GET /movies.json
   def index
     @movies = Movie.all
+    @category = Category.all
+    @subcategory = Category.all
   end
 
   # GET /movies/1
@@ -14,8 +16,10 @@ class MoviesController < ApplicationController
 
   # GET /movies/new
   def new
+    authorize Movie
     @movie = Movie.new
-    authorize @movie
+    @category = Category.all
+    @subcategory = Category.all
   end
 
   # GET /movies/1/edit
@@ -26,12 +30,11 @@ class MoviesController < ApplicationController
   # POST /movies
   # POST /movies.json
   def create
-
+    authorize Movie
     @movie = Movie.new(movie_params)
-    authorize @movie
     respond_to do |format|
       if @movie.save
-        format.html { redirect_to @movie, notice: 'Movie was successfully created.' }
+        format.html { redirect_to @movie }
         format.json { render :show, status: :created, location: @movie }
       else
         format.html { render :new }
@@ -46,7 +49,7 @@ class MoviesController < ApplicationController
     authorize @movie
     respond_to do |format|
       if @movie.update(movie_params)
-        format.html { redirect_to @movie, notice: 'Movie was successfully updated.' }
+        format.html { redirect_to @movie}
         format.json { render :show, status: :ok, location: @movie }
       else
         format.html { render :edit }
@@ -58,15 +61,16 @@ class MoviesController < ApplicationController
   # DELETE /movies/1
   # DELETE /movies/1.json
   def destroy
-    authorize @movie
     @movie.destroy
+    authorize @movie
     respond_to do |format|
-      format.html { redirect_to movies_url, notice: 'Movie was successfully destroyed.' }
+      format.html { redirect_to movies_url }
       format.json { head :no_content }
     end
   end
 
-  def insert_mode
+  def get_from_imdb
+
   end
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -77,6 +81,6 @@ class MoviesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def movie_params
-      params.require(:movie).permit(:name, :year, :pg, :minute, :userrate, :imdbrate, :plot, :director, :writers, :stars, :poster)
+      params.require(:movie).permit(:name, :year, :pg, :minute, :imdbrate, :plot, :director, :writers, :stars, :poster,:category_id,:subcategory_id)
     end
 end

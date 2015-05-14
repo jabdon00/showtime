@@ -14,7 +14,31 @@
  *= require_self
  */
 
-body { padding-bottom: 70px; }
+@font-face {
+  font-family: 'BYagut';
+  src:url('BYagut.eot');
+  src:url('BYagut.eot?#iefix') format('embedded-opentype'),
+  url('BYagut.svg#icomoon') format('svg'),
+  url('BYagut.woff') format('woff'),
+  url('BYagut.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'BYekan';
+  src:url('BYekan.eot');
+  src:url('BYekan.eot?#iefix') format('embedded-opentype'),
+  url('BYekan.svg#icomoon') format('svg'),
+  url('BYekan.woff') format('woff'),
+  url('BYekan.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  padding-bottom: 70px;
+  background-color: gainsboro;
+}
 
 .btn-xlarge {
   padding: 36px 36px;
@@ -23,4 +47,30 @@ body { padding-bottom: 70px; }
   -webkit-border-radius: 8px;
   -moz-border-radius: 8px;
   border-radius: 8px;
+}
+
+.post-body {
+  background: none repeat scroll 0 0 #ffffff;
+  border: 1px solid #dadada;
+  border-radius: 3px;
+  margin-bottom: 50px;
+  padding: 10px;
+  font-family: BYekan;
+}
+.post-header-div{
+  background-color: lightskyblue;
+  border-radius: 50px/15px;
+}
+.post-header{
+  font-family: BYekan;
+  text-shadow: 2px 2px 2px #CCCCCC;
+}
+
+.poster{
+  position: absolute;
+  margin: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }

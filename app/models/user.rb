@@ -4,4 +4,10 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+  def isAdmin?
+    self.has_role? :admin
+  end
+  def isUser?
+     self.has_role? :user
+  end
 end

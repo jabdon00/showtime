@@ -2,8 +2,10 @@ Rails.application.routes.draw do
   resources :movies
   devise_for :users
   get 'static_page/index'
-  root to: 'static_page#index'
+  #root to: 'static_page#index'
+  root to: 'movies#index'
   get 'static_page/admin_panel' => 'static_page#admin_panel', as: :admin_panel
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

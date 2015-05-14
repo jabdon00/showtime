@@ -1,33 +1,45 @@
 class MoviePolicy
   attr_reader :user
 
-  def initialize(user, post)
+  def initialize(user,movie)
     @user = user
+    @movie = movie
   end
 
   def create?
-    user.has_role? :admin
+    is_admin?
   end
-  def new
-    user.has_role? :admin
+  def new?
+    is_admin?
   end
-  def edit
-    user.has_role? :admin
+  def edit?
+    is_admin?
   end
-  def update
-    user.has_role? :admin
+  def update?
+    is_admin?
   end
-  def destroy
-    user.has_role? :admin
+  def destroy?
+    is_admin?
   end
-  def insert_mode
-    user.has_role? :admin
+  def insert_mode?
+    is_admin?
   end
-  def show
+
+  def show?
     true
   end
-  def index
+  def index?
     true
+  end
+
+  private
+
+  def is_admin?
+    if (user.present?)
+      return user.has_role? :admin
+    else
+      return false
+    end
   end
 
 end
