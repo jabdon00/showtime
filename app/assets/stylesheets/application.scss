@@ -85,3 +85,19 @@ body {
 .post_create_date{
   color: red;
 }
+div.container4 {
+  position: relative;
+  width: 80px;
+}
+div.container4 p {
+  margin: 0;
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  font-size: medium;
+}
+.larg-td{
+  word-break: break-all;
+}

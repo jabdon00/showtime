@@ -9,6 +9,8 @@
       <div class="row">
         <div class="col-md-8">
           <table class="table table-striped">
+            <col width="100px"/>
+            <col width="500px"/>
             <tbody>
             <tr>
               <td>
@@ -39,7 +41,7 @@
                 <strong>امتیاز کاربران</strong>
               </td>
               <td>
-                <%= @movie.userrate %>
+                <%= rating_for @movie, "user_rate", :star => 10,disable_after_rate: true, space: true %>
               </td>
             </tr>
             <tr>
@@ -47,7 +49,11 @@
                 <strong>امتیاز IMDB</strong>
               </td>
               <td>
-                <%= @movie.imdbrate %>
+                <div class="container4">
+                  <image class="starsimages" src="../assets/stars_small.png">
+                    <p>  <%= @movie.imdbrate %></p>
+                  </image>
+                </div>
               </td>
             </tr>
             <tr>
@@ -78,7 +84,7 @@
               <td>
                 <strong>خلاصه</strong>
               </td>
-              <td>
+              <td class="larg-td">
                 <%= @movie.plot %>
               </td>
             </tr>
@@ -127,5 +133,25 @@
           </table>
         </div>
       </div>
+    </div>
 
+    <div class="row">
+          <div class="col-md-8">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title" > نظرات : </h3>
+                </div>
+                <div class="panel-body">
+                    <%= render partial: 'movie_comment/form', locals: {movie_id: @movie.id} %>
+                 </div>
+            </div>
+          </div>
+          <div class="col-md-8">
+              <ul class="list-unstyled" id="movie_comments">
+              <% @movie_comments.each do |comment| %>
+              <%= render partial: 'movie_comment/comment',
+                    locals: {comment: comment.comment,comment_time: comment.created_at,comment_user: comment.user_id } %>
+              <% end %>
+              </ul>
+         </div>
     </div>

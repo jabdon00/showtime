@@ -4,7 +4,7 @@ class MoviesController < ApplicationController
   # GET /movies
   # GET /movies.json
   def index
-    @movies = Movie.all
+    @movies = Movie.all.order(created_at: :desc)
     @category = Category.all
     @subcategory = Category.all
   end
@@ -14,6 +14,8 @@ class MoviesController < ApplicationController
   def show
     @category = Category.all
     @subcategory = Category.all
+    @movie_comment = MovieComment.new
+    @movie_comments = MovieComment.where(movie_id: @movie.id).all.order(created_at: :desc)
   end
 
   # GET /movies/new

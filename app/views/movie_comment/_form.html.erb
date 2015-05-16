@@ -1,0 +1,17 @@
+<div class="form-group">
+  <%= simple_form_for(@movie_comment, url: '/movie_comment/create', remote: true) do |f| %>
+      <%= f.input :comment ,label: false, as: :text,placeholder: 'متن'  ,required: true,
+                  input_html:{class: "form-control", rows: "5"} %>
+      <%= f.input :movie_id, label: false, input_html: {value: movie_id, type: 'hidden'} %>
+      <br>
+      <div class="form-actions">
+        <%= f.button :submit, 'ارسال' ,class: "btn btn-success" %>
+      </div>
+      <% if current_user.blank? %>
+      <div class="alert alert-warning" role="alert" id="flash-box">
+        <strong id="flash"> لطفا وارد سایت شوید </strong>
+      </div>
+     <% end %>
+
+  <% end %>
+</div>

@@ -1,0 +1,9 @@
+<% if @error.present? %>
+$('#flash-box').show();
+$('#flash').text("<%= j @error %>");
+<% else %>
+$('#movie_comments').prepend("<%= j render partial: 'comment', locals: {comment: @movie_comment.comment,
+        comment_time: @movie_comment.created_at,comment_user: @movie_comment.user_id } %>");
+$('#movie_comment_text').val('');
+$('#flash-box').hide();
+<% end %>

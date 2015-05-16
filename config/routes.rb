@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  post 'movie_comment/create'
+
+  get 'movie_comment/new'
+
+  post '/rate' => 'rater#create', :as => 'rate'
   resources :movies
   devise_for :users
   get 'static_page/index'
