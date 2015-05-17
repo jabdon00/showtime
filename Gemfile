@@ -52,3 +52,5 @@ gem 'pundit'
 gem  'mini_magick'
 gem 'carrierwave'
 gem 'ratyrate'
+gem 'cloudinary'
+gem 'rails_12factor', group: :production
