@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: showtimeapp-herokoapp-com
+  api_key: '785192867988719'
+  api_secret: Pp-O1wDfoEnYiqYU1_AadTncY50
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: showtimeapp-herokoapp-com
+  api_key: '785192867988719'
+  api_secret: Pp-O1wDfoEnYiqYU1_AadTncY50
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: showtimeapp-herokoapp-com
+  api_key: '785192867988719'
+  api_secret: Pp-O1wDfoEnYiqYU1_AadTncY50
+  enhance_image_tag: true
+  static_image_support: false
